@@ -3,2099 +3,1201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Secure Bank | International Banking Solutions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Nedbank Online Banking</title>
     <style>
-        :root {
-            --primary: #0033a0;
-            --secondary: #d4af37;
-            --dark: #001f3f;
-            --light: #f8f9fa;
-            --danger: #dc3545;
-            --success: #28a745;
-            --warning: #ffc107;
-            --info: #17a2b8;
-            --gray: #6c757d;
-            --white: #ffffff;
-            --dark-bg: #1a1a2e;
-            --card-bg: #16213e;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         body {
-            background-color: var(--dark-bg);
-            color: #e0e0e0;
-            line-height: 1.6;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .hidden {
+            display: none !important;
         }
-
-        /* Header Styles */
-        header {
-            background: linear-gradient(to right, var(--primary), #002964);
-            color: var(--white);
-            padding: 1rem 0;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        /* Main Page Styles */
+        .main-page {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-
-        .header-container {
+        .navbar {
+            background-color: #00823e;
+            color: #fff;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .navbar img {
+            max-width: 120px;
         }
-
-        .logo img {
-            height: 40px;
-        }
-
-        .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .security-badge {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 8px 15px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-        }
-
-        nav ul {
-            display: flex;
+        .navbar ul {
             list-style: none;
-            gap: 1.5rem;
-        }
-
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        nav a:hover {
-            color: var(--secondary);
-        }
-
-        .auth-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 20px;
         }
-
-        .btn {
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            border: none;
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9em;
             cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
         }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--white);
-            color: var(--white);
+        .navbar a:hover {
+            text-decoration: underline;
         }
-
-        .btn-outline:hover {
-            background: var(--white);
-            color: var(--primary);
-        }
-
-        .btn-primary {
-            background: var(--secondary);
-            color: var(--dark);
-        }
-
-        .btn-primary:hover {
-            background: #c19b2e;
-        }
-
-        /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1563911302283-d2bc129e7570?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background: linear-gradient(rgba(0, 130, 62, 0.8), rgba(0, 130, 62, 0.8)), url('https://via.placeholder.com/1200x400?text=Hero+Image');
             background-size: cover;
             background-position: center;
-            color: var(--white);
-            padding: 5rem 0;
+            color: #fff;
             text-align: center;
+            padding: 50px 20px;
         }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .hero h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
         }
-
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            font-size: 1em;
+            margin-bottom: 20px;
         }
-
-        /* Features Section */
-        .features {
-            padding: 4rem 0;
-            background: var(--dark);
+        .hero button {
+            background-color: #fff;
+            color: #00823e;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
         }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
+        .hero button:hover {
+            background-color: #f0f0f0;
         }
-
-        .section-title h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            color: var(--secondary);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            margin-bottom: 1rem;
-            color: var(--white);
-        }
-
-        /* Accounts Section */
-        .accounts {
-            padding: 4rem 0;
-            background: linear-gradient(to right, #2d2d42, #252536);
-        }
-
-        .accounts-container {
+        .services {
+            padding: 20px;
             max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .account-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
-
-        .account-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        .account-header {
-            background: var(--primary);
-            color: var(--white);
-            padding: 1.5rem;
+        .service-card {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
-
-        .account-body {
-            padding: 2rem;
+        .service-card h3 {
+            color: #00823e;
+            margin-bottom: 10px;
+            font-size: 1.1em;
         }
-
-        .account-features {
-            list-style: none;
-            margin: 1.5rem 0;
+        .service-card p {
+            font-size: 0.9em;
+            color: #666;
         }
-
-        .account-features li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #2a2a4a;
+        .affiliation {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
-
-        .account-features li:last-child {
-            border-bottom: none;
+        .affiliation p {
+            font-size: 1em;
+            color: #00823e;
+            font-weight: bold;
         }
-
-        .account-features i {
-            color: var(--primary);
-            margin-right: 0.5rem;
+        .footer {
+            background-color: #00823e;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            margin-top: auto;
         }
-
-        /* Security Section */
-        .security {
-            padding: 4rem 0;
-            background: var(--dark);
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
         }
-
-        .security-container {
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        /* Form and Dashboard Styles */
+        .container {
             display: flex;
-            flex-wrap: wrap;
+            justify-content: center;
             align-items: center;
-            gap: 3rem;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            padding: 15px;
         }
-
-        .security-content {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .security-image {
-            flex: 1;
-            min-width: 300px;
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
             text-align: center;
         }
-
-        .security-image img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
+        .form-container img {
+            max-width: 120px;
+            margin-bottom: 15px;
         }
-
-        /* Global Presence Section */
-        .global {
-            padding: 4rem 0;
-            background: linear-gradient(to right, #2d2d42, #252536);
-            color: var(--white);
+        .form-container h2 {
+            color: #00823e;
+            margin-bottom: 15px;
+            font-size: 1.5em;
         }
-
-        .global-container {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 3rem;
+        .form-container label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 0.9em;
         }
-
-        .global-content {
-            flex: 1;
-            min-width: 300px;
+        .form-container input, .form-container select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.9em;
         }
-
-        .global-image {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
-        }
-
-        .global-image img {
-            max-width: 80%;
-            border-radius: 10px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        /* App Section */
-        .app {
-            padding: 4rem 0;
-            background: linear-gradient(to right, var(--primary), #002964);
-            color: var(--white);
-        }
-
-        .app-container {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 3rem;
-        }
-
-        .app-content {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .app-image {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
-        }
-
-        .app-image img {
-            max-width: 80%;
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .app-badges {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .badge {
-            background: var(--white);
-            border-radius: 10px;
-            padding: 0.5rem 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--dark);
-            font-weight: 600;
+        .form-container button {
+            background-color: #00823e;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            width: 100%;
             cursor: pointer;
-            transition: var(--transition);
+            font-size: 1em;
         }
-
-        .badge:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        .form-container button:hover {
+            background-color: #006633;
         }
-
-        /* Dashboard Styles */
-        .dashboard {
-            display: none;
-            padding: 2rem 0;
+        .form-container a {
+            color: #00823e;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9em;
+            cursor: pointer;
         }
-
-        .dashboard-header {
+        .form-container a:hover {
+            text-decoration: underline;
+        }
+        .error, .success {
+            margin-top: 10px;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        .error {
+            color: red;
+            background-color: #ffebee;
+        }
+        .success {
+            color: green;
+            background-color: #e8f5e9;
+        }
+        .dashboard, .admin-dashboard {
+            max-width: 1000px;
+            margin: 15px auto;
+            padding: 15px;
+        }
+        .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #2a2a4a;
+            background-color: #00823e;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
         }
-
-        .welcome-text h2 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
+        .header h1 {
+            margin: 0;
+            font-size: 1.2em;
         }
-
-        .account-summary {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .summary-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .summary-card h3 {
-            color: var(--gray);
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-        }
-
-        .balance {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--white);
-        }
-
-        .account-number {
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
-
-        .quick-actions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .action-btn {
-            background: var(--card-bg);
-            border: 1px solid #2a2a4a;
-            border-radius: 10px;
-            padding: 1.5rem;
-            text-align: center;
+        .logout-btn {
+            background-color: #fff;
+            color: #00823e;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
             cursor: pointer;
-            transition: var(--transition);
+            font-size: 0.9em;
         }
-
-        .action-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-            border-color: var(--primary);
+        .logout-btn:hover {
+            background-color: #f0f0f0;
         }
-
-        .action-icon {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
+        .profile-card, .balance-card, .transactions, .transfer-form, .admin-section {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
         }
-
-        .recent-transactions {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
+        .profile-card h3, .balance-card h3, .transactions h3, .transfer-form h3, .admin-section h3 {
+            color: #00823e;
+            margin-bottom: 10px;
+            font-size: 1.1em;
         }
-
+        .profile-info p {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+        .edit-profile-btn {
+            background-color: #00823e;
+            color: #fff;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        .edit-profile-btn:hover {
+            background-color: #006633;
+        }
+        .balance {
+            font-size: 1.8em;
+            color: #00823e;
+            margin: 10px 0;
+        }
         .transaction-list {
             list-style: none;
-            margin-top: 1rem;
         }
-
         .transaction-item {
             display: flex;
             justify-content: space-between;
-            padding: 1rem 0;
-            border-bottom: 1px solid #2a2a4a;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9em;
         }
-
-        .transaction-item:last-child {
-            border-bottom: none;
+        .transfer-form label, .admin-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 0.9em;
         }
-
-        .transaction-details h4 {
-            margin-bottom: 0.3rem;
-            color: var(--white);
+        .transfer-form input, .transfer-form select, .admin-form input, .admin-form select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.9em;
         }
-
-        .transaction-date {
-            color: var(--gray);
-            font-size: 0.9rem;
+        .transfer-btn, .admin-btn {
+            background-color: #00823e;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-right: 8px;
         }
-
-        .transaction-amount {
-            font-weight: 600;
+        .transfer-btn:hover, .admin-btn:hover {
+            background-color: #006633;
         }
-
-        .negative {
-            color: var(--danger);
+        .delete-btn {
+            background-color: #d32f2f;
+            color: #fff;
         }
-
-        .positive {
-            color: var(--success);
+        .delete-btn:hover {
+            background-color: #b71c1c;
         }
-
-        /* New Dashboard Components */
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
+        .freeze-btn {
+            background-color: #0288d1;
+            color: #fff;
         }
-
-        .chart-container {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
+        .freeze-btn:hover {
+            background-color: #01579b;
         }
-
-        .chart-title {
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-
-        .stats-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        .stat-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .stat-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(0, 51, 160, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-
-        .stat-content h3 {
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .stat-value {
-            color: var(--white);
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .upcoming-payments {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-        }
-
-        .payment-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 1rem 0;
-            border-bottom: 1px solid #2a2a4a;
-        }
-
-        .payment-item:last-child {
-            border-bottom: none;
-        }
-
-        .payment-details h4 {
-            margin-bottom: 0.3rem;
-            color: var(--white);
-        }
-
-        .payment-date {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        .payment-amount {
-            font-weight: 600;
-            color: var(--warning);
-        }
-
-        .investment-performance {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
-        }
-
-        .performance-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .performance-stat {
-            text-align: center;
-            padding: 1rem;
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .performance-stat h4 {
-            color: var(--gray);
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .performance-value {
-            color: var(--white);
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .positive-change {
-            color: var(--success);
-            font-size: 0.9rem;
-            margin-top: 0.3rem;
-        }
-
-        .negative-change {
-            color: var(--danger);
-            font-size: 0.9rem;
-            margin-top: 0.3rem;
-        }
-
-        /* Footer */
-        footer {
-            background: #15152b;
-            color: #ccc;
-            padding: 3rem 0;
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-col h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-            color: var(--secondary);
-        }
-
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--secondary);
-        }
-
-        .footer-col ul {
+        .user-list {
             list-style: none;
         }
-
-        .footer-col ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-col ul li a {
-            color: #ccc;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-col ul li a:hover {
-            color: var(--white);
-            padding-left: 5px;
-        }
-
-        .social-icons {
+        .user-item {
             display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-icons a {
-            color: var(--white);
-            background: rgba(255, 255, 255, 0.1);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .social-icons a:hover {
-            background: var(--primary);
-        }
-
-        .copyright {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .disclaimer {
-            background: rgba(0, 86, 179, 0.1);
-            padding: 1rem;
-            border-radius: 5px;
-            border-left: 4px solid var(--primary);
-            margin-top: 2rem;
-        }
-
-        /* Modals */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: var(--card-bg);
-            border-radius: 10px;
-            width: 100%;
-            max-width: 500px;
-            padding: 2rem;
-            position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--gray);
-        }
-
-        .modal-title {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--white);
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #2a2a4a;
-            border-radius: 5px;
-            font-size: 1rem;
-            background: var(--dark-bg);
-            color: var(--white);
-        }
-
-        .form-options {
-            display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9em;
         }
-
-        .remember-me {
+        .user-item span {
+            flex: 1 1 120px;
+            margin-right: 8px;
+        }
+        .user-actions {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            gap: 8px;
+            flex-wrap: wrap;
         }
-
-        .forgot-password {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .modal-btn {
-            width: 100%;
-            padding: 0.8rem;
-            background: var(--primary);
-            color: var(--white);
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .modal-btn:hover {
-            background: #002964;
-        }
-
-        .modal-footer {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-
-        .modal-footer a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        /* Form Steps */
-        .form-steps {
+        .admin-form, .deposit-form {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-            position: relative;
+            gap: 8px;
+            margin-top: 8px;
+            flex-wrap: wrap;
         }
-
-        .form-steps::before {
-            content: '';
-            position: absolute;
-            top: 15px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: #2a2a4a;
-            z-index: 1;
+        .admin-form input, .deposit-form input {
+            flex: 1;
+            min-width: 100px;
         }
-
-        .step {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: #2a2a4a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            position: relative;
-            z-index: 2;
-            color: var(--white);
+        .edit-profile-form, .admin-edit-form {
+            margin-top: 15px;
         }
-
-        .step.active {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        .step.completed {
-            background: var(--success);
-            color: var(--white);
-        }
-
-        .step-label {
-            position: absolute;
-            top: 35px;
-            left: 50%;
-            transform: translateX(-50%);
-            white-space: nowrap;
-            font-size: 0.8rem;
-            color: var(--gray);
-        }
-
-        .step-content {
-            display: none;
-        }
-
-        .step-content.active {
-            display: block;
-        }
-
-        .form-navigation {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .auth-buttons {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-                font-size: 1.5rem;
-                background: none;
-                border: none;
-                color: var(--white);
-                cursor: pointer;
-            }
-
-            .global-container, .app-container, .security-container {
+            .navbar {
                 flex-direction: column;
+                gap: 10px;
             }
-
-            .dashboard-grid {
+            .navbar ul {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            .hero {
+                padding: 30px 10px;
+            }
+            .hero h1 {
+                font-size: 1.5em;
+            }
+            .services, .affiliation {
                 grid-template-columns: 1fr;
             }
+            .container {
+                padding: 10px;
+            }
+            .form-container {
+                padding: 15px;
+                max-width: 100%;
+            }
+            .dashboard, .admin-dashboard {
+                padding: 10px;
+            }
+            .header {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .header h1 {
+                font-size: 1em;
+            }
+            .profile-card, .balance-card, .transactions, .transfer-form, .admin-section {
+                padding: 10px;
+            }
+            .user-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            .user-actions {
+                margin-top: 8px;
+                width: 100%;
+                justify-content: flex-start;
+            }
+            .admin-form, .deposit-form {
+                flex-direction: column;
+            }
+            .admin-form input, .admin-form select, .deposit-form input, .deposit-form button {
+                width: 100%;
+            }
         }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 70%;
-            height: 100vh;
-            background: var(--dark);
-            z-index: 1000;
-            padding: 2rem;
-            transition: var(--transition);
-        }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .close-menu {
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .mobile-nav {
-            list-style: none;
-        }
-
-        .mobile-nav li {
-            margin-bottom: 1.5rem;
-        }
-
-        .mobile-nav a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 500;
-            display: block;
-            padding: 0.5rem 0;
-            transition: var(--transition);
-        }
-
-        .mobile-nav a:hover {
-            color: var(--secondary);
-        }
-
-        .mobile-auth {
-            margin-top: 2rem;
-        }
-
-        /* Theme Toggle */
-        .theme-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            z-index: 100;
-            border: none;
+        @media (max-width: 480px) {
+            .navbar img, .form-container img {
+                max-width: 100px;
+            }
+            .hero h1 {
+                font-size: 1.2em;
+            }
+            .form-container h2 {
+                font-size: 1.2em;
+            }
+            .balance {
+                font-size: 1.5em;
+            }
+            .affiliation p {
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-container">
-                <div class="logo">
-                    <i class="fas fa-building" style="font-size: 2rem; color: var(--secondary);"></i>
-                    <h1>Global Secure Bank</h1>
-                </div>
-                <div class="security-badge">
-                    <i class="fas fa-lock"></i>
-                    <span>256-bit Encryption</span>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="#">Personal</a></li>
-                        <li><a href="#">Business</a></li>
-                        <li><a href="#">Corporate</a></li>
-                        <li><a href="#">Investments</a></li>
-                        <li><a href="#">Global Services</a></li>
-                    </ul>
-                </nav>
-                <div class="auth-buttons">
-                    <button class="btn btn-outline" id="loginBtn">Online Banking</button>
-                    <button class="btn btn-primary" id="registerBtn">Open Account</button>
-                </div>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
+    <!-- Main Page -->
+    <div id="mainPage" class="main-page">
+        <div class="navbar">
+            <img src="https://via.placeholder.com/150x50/00823e/fff?text=Nedbank" alt="Nedbank Logo">
+            <ul>
+                <li><a href="#" onclick="showMain()">Home</a></li>
+                <li><a href="#" onclick="showMain()">Services</a></li>
+                <li><a href="#" onclick="showMain()">Contact</a></li>
+                <li><a href="#" onclick="showLogin()">Log In</a></li>
+                <li><a href="#" onclick="showSignup()">Sign Up</a></li>
+            </ul>
+        </div>
+        <div class="hero">
+            <h1>Welcome to Nedbank Online Banking</h1>
+            <p>Securely manage your finances with our easy-to-use platform. Join millions of customers today.</p>
+            <button onclick="showSignup()">Get Started</button>
+        </div>
+        <div class="services">
+            <div class="service-card">
+                <h3>Online Banking</h3>
+                <p>Access your account anytime, anywhere with our secure platform.</p>
+            </div>
+            <div class="service-card">
+                <h3>Fast Transfers</h3>
+                <p>Send money to any account quickly and securely.</p>
+            </div>
+            <div class="service-card">
+                <h3>Account Management</h3>
+                <p>Manage your profile, view balances, and track transactions.</p>
             </div>
         </div>
-    </header>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <div class="logo">
-                <i class="fas fa-building" style="font-size: 1.5rem; color: var(--secondary);"></i>
-                <h1>Global Secure Bank</h1>
-            </div>
-            <button class="close-menu" id="closeMenu">
-                <i class="fas fa-times"></i>
-            </button>
+        <div class="affiliation">
+            <p>Affiliated with Interpol for secure withdrawal of recovery funds</p>
         </div>
-        <ul class="mobile-nav">
-            <li><a href="#">Personal</a></li>
-            <li><a href="#">Business</a></li>
-            <li><a href="#">Corporate</a></li>
-            <li><a href="#">Investments</a></li>
-            <li><a href="#">Global Services</a></li>
-        </ul>
-        <div class="mobile-auth">
-            <button class="btn btn-outline" style="width: 100%; margin-bottom: 1rem;">Online Banking</button>
-            <button class="btn btn-primary" style="width: 100%;">Open Account</button>
+        <div class="footer">
+            <p>Contact us: support@nedbank.com | 0800 555 111</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2>Global Banking Excellence</h2>
-                <p>Experience world-class financial services with unparalleled security and privacy protection across 180 countries worldwide.</p>
-                <button class="btn btn-primary" id="heroRegisterBtn">Open Your Account Today</button>
-                <button class="btn btn-outline" id="securityInfoBtn">Security Features</button>
-            </div>
+    <!-- Sign-Up Page -->
+    <div id="signupPage" class="container hidden">
+        <div class="form-container">
+            <img src="https://via.placeholder.com/150x50/00823e/fff?text=Nedbank" alt="Nedbank Logo">
+            <h2>Sign Up for Nedbank Online Banking</h2>
+            <p style="font-size: 0.8em; color: #666;">Requirements: Must be 18+, provide SA ID or Passport, contact details.</p>
+            <form id="signupForm">
+                <label for="fullName">Full Name (as per ID)</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                <label for="idType">ID Type</label>
+                <select id="idType" name="idType" required>
+                    <option value="">Select ID Type</option>
+                    <option value="sa_id">South African ID</option>
+                    <option value="passport">Foreign Passport</option>
+                </select>
+                <label for="idNumber">ID/Passport Number</label>
+                <input type="text" id="idNumber" name="idNumber" placeholder="Enter ID or Passport number" pattern="[0-9A-Za-z]{10,20}" required title="10-20 alphanumeric characters">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required>
+                <label for="address">Residential Address</label>
+                <input type="text" id="address" name="address" placeholder="Enter your address" required>
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" pattern="[0-9]{10}" required title="10-digit number">
+                <label for="signupEmail">Email</label>
+                <input type="email" id="signupEmail" name="email" placeholder="Enter your email" required>
+                <label for="signupUsername">Username</label>
+                <input type="text" id="signupUsername" name="username" placeholder="Choose a username" required>
+                <label for="signupPassword">Password</label>
+                <input type="password" id="signupPassword" name="password" placeholder="Choose a password" minlength="8" required>
+                <label for="signupConfirmPassword">Confirm Password</label>
+                <input type="password" id="signupConfirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                <label for="securityQuestion">Security Question</label>
+                <select id="securityQuestion" name="securityQuestion" required>
+                    <option value="">Select a security question</option>
+                    <option value="pet">What is the name of your first pet?</option>
+                    <option value="school">What is the name of your primary school?</option>
+                    <option value="city">In which city were you born?</option>
+                </select>
+                <label for="securityAnswer">Security Answer</label>
+                <input type="text" id="securityAnswer" name="securityAnswer" placeholder="Enter your answer" required>
+                <button type="submit">Submit Registration</button>
+            </form>
+            <div id="signupMessage" class="error hidden"></div>
+            <a href="#" onclick="showLogin()">Already have an account? Log In</a>
         </div>
-    </section>
+    </div>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Why Choose Global Secure Bank?</h2>
-                <p>Premium financial services for discerning clients worldwide</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Maximum Security</h3>
-                    <p>Military-grade encryption and multi-factor authentication protect your assets 24/7.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3>Global Access</h3>
-                    <p>Manage your finances from anywhere in the world with our seamless digital platform.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-coins"></i>
-                    </div>
-                    <h3>Wealth Management</h3>
-                    <p>Expert financial advisors to help grow and protect your wealth across markets.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Accounts Section -->
-    <section class="accounts">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Account Options</h2>
-                <p>Find the perfect account for your financial needs</p>
-            </div>
-            <div class="accounts-container">
-                <div class="account-cards">
-                    <div class="account-card">
-                        <div class="account-header">
-                            <h3>Personal Banking</h3>
-                        </div>
-                        <div class="account-body">
-                            <p>Premium banking for individuals with exclusive benefits</p>
-                            <ul class="account-features">
-                                <li><i class="fas fa-check"></i> Multi-currency accounts</li>
-                                <li><i class="fas fa-check"></i> Priority service 24/7</li>
-                                <li><i class="fas fa-check"></i> Exclusive metal debit card</li>
-                                <li><i class="fas fa-check"></i> Wealth management services</li>
-                            </ul>
-                            <button class="btn btn-primary" style="width: 100%;" data-account-type="personal">Open Account</button>
-                        </div>
-                    </div>
-                    <div class="account-card">
-                        <div class="account-header">
-                            <h3>Business Excellence</h3>
-                        </div>
-                        <div class="account-body">
-                            <p>Comprehensive solutions for businesses and entrepreneurs</p>
-                            <ul class="account-features">
-                                <li><i class="fas fa-check"></i> Corporate banking services</li>
-                                <li><i class="fas fa-check"></i> International wire transfers</li>
-                                <li><i class="fas fa-check"></i> Merchant services</li>
-                                <li><i class="fas fa-check"></i> Dedicated business advisor</li>
-                            </ul>
-                            <button class="btn btn-primary" style="width: 100%;" data-account-type="business">Open Account</button>
-                        </div>
-                    </div>
-                    <div class="account-card">
-                        <div class="account-header">
-                            <h3>Private Wealth</h3>
-                        </div>
-                        <div class="account-body">
-                            <p>Exclusive services for high-net-worth individuals</p>
-                            <ul class="account-features">
-                                <li><i class="fas fa-check"></i> Personalized investment strategies</li>
-                                <li><i class="fas fa-check"></i> Estate planning services</li>
-                                <li><i class="fas fa-check"></i> Concierge banking</li>
-                                <li><i class="fas fa-check"></i> Family office services</li>
-                            </ul>
-                            <button class="btn btn-primary" style="width: 100%;" data-account-type="premium">Open Account</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Security Section -->
-    <section class="security">
-        <div class="container">
-            <div class="section-title">
-                <h2>Uncompromising Security</h2>
-                <p>Your financial safety is our highest priority</p>
-            </div>
-            <div class="security-container">
-                <div class="security-content">
-                    <h3>Advanced Protection Systems</h3>
-                    <p>We employ cutting-edge security technologies to safeguard your financial assets and personal information.</p>
-                    <p>With biometric authentication, end-to-end encryption, and real-time monitoring, you can bank with absolute confidence.</p>
-                    <ul class="account-features">
-                        <li><i class="fas fa-check"></i> Biometric authentication</li>
-                        <li><i class="fas fa-check"></i> End-to-end encryption</li>
-                        <li><i class="fas fa-check"></i> Real-time fraud monitoring</li>
-                        <li><i class="fas fa-check"></i> Secure document vault</li>
-                    </ul>
-                </div>
-                <div class="security-image">
-                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Security Image">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Global Presence Section -->
-    <section class="global">
-        <div class="container">
-            <div class="global-container">
-                <div class="global-content">
-                    <h2>Global Reach, Local Expertise</h2>
-                    <p>With offices in 25 countries and services available in 180 nations, we provide truly global banking with local market expertise.</p>
-                    <p>Our international network ensures seamless cross-border transactions and personalized service wherever you are.</p>
-                    <div class="app-badges">
-                        <div class="badge">
-                            <i class="fas fa-building"></i>
-                            <div>25 Countries</div>
-                        </div>
-                        <div class="badge">
-                            <i class="fas fa-globe-americas"></i>
-                            <div>180 Nations Served</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="global-image">
-                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Global Presence">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- App Section -->
-    <section class="app">
-        <div class="container">
-            <div class="app-container">
-                <div class="app-content">
-                    <h2>Banking Without Boundaries</h2>
-                    <p>Our award-winning mobile app lets you manage your finances securely from anywhere in the world.</p>
-                    <div class="app-badges">
-                        <div class="badge">
-                            <i class="fab fa-apple" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <div>Download on the</div>
-                                <div>App Store</div>
-                            </div>
-                        </div>
-                        <div class="badge">
-                            <i class="fab fa-google-play" style="font-size: 1.2rem;"></i>
-                            <div>
-                                <div>GET IT ON</div>
-                                <div>Google Play</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="app-image">
-                    <img src="https://images.unsplash.com/photo-1611096265583-5d8e5a043b3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mobile App">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dashboard Section (Initially Hidden) -->
-    <section class="dashboard" id="dashboard">
-        <div class="container">
-            <div class="dashboard-header">
-                <div class="welcome-text">
-                    <h2>Welcome, <span id="userName">User</span>!</h2>
-                    <p>Here's an overview of your finances</p>
-                </div>
-                <button class="btn btn-outline" id="logoutBtn">Logout</button>
-            </div>
-
-            <div class="account-summary">
-                <div class="summary-card">
-                    <h3>Available Balance</h3>
-                    <div class="balance">$ <span id="accountBalance">85,430.00</span></div>
-                    <div class="account-number">Account: <span id="accountNumber">XXXX-XXXX-1234</span></div>
-                </div>
-                <div class="summary-card">
-                    <h3>Investment Portfolio</h3>
-                    <div class="balance">$ <span id="investmentBalance">242,150.00</span></div>
-                    <div class="account-number">YTD Return: +12.4%</div>
-                </div>
-                <div class="summary-card">
-                    <h3>Credit Facilities</h3>
-                    <div class="balance">$ <span id="creditBalance">125,000.00</span></div>
-                    <div class="account-number">Available Credit</div>
-                </div>
-            </div>
-
-            <div class="quick-actions">
-                <div class="action-btn">
-                    <div class="action-icon">
-                        <i class="fas fa-exchange-alt"></i>
-                    </div>
-                    <h3>Transfer</h3>
-                </div>
-                <div class="action-btn">
-                    <div class="action-icon">
-                        <i class="fas fa-money-bill-wave"></i>
-                    </div>
-                    <h3>Pay</h3>
-                </div>
-                <div class="action-btn">
-                    <div class="action-icon">
-                        <i class="fas fa-piggy-bank"></i>
-                    </div>
-                    <h3>Save</h3>
-                </div>
-                <div class="action-btn">
-                    <div class="action-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Invest</h3>
-                </div>
-            </div>
-
-            <div class="dashboard-grid">
-                <div class="chart-container">
-                    <h3 class="chart-title">Spending Overview</h3>
-                    <canvas id="spendingChart"></canvas>
-                </div>
-                
-                <div class="stats-container">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-arrow-up"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h3>Monthly Income</h3>
-                            <div class="stat-value">$12,450</div>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-arrow-down"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h3>Monthly Spending</h3>
-                            <div class="stat-value">$8,230</div>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-piggy-bank"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h3>Monthly Savings</h3>
-                            <div class="stat-value">$4,220</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="investment-performance">
-                <h3 class="chart-title">Investment Performance</h3>
-                <canvas id="investmentChart"></canvas>
-                
-                <div class="performance-stats">
-                    <div class="performance-stat">
-                        <h4>Total Value</h4>
-                        <div class="performance-value">$242,150</div>
-                    </div>
-                    <div class="performance-stat">
-                        <h4>YTD Return</h4>
-                        <div class="performance-value">+12.4%</div>
-                        <div class="positive-change"><i class="fas fa-arrow-up"></i> 2.3% from last month</div>
-                    </div>
-                    <div class="performance-stat">
-                        <h4>Risk Level</h4>
-                        <div class="performance-value">Moderate</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dashboard-grid">
-                <div class="recent-transactions">
-                    <h3>Recent Transactions</h3>
-                    <ul class="transaction-list">
-                        <li class="transaction-item">
-                            <div class="transaction-details">
-                                <h4>Wire Transfer - Credit</h4>
-                                <div class="transaction-date">28 Nov 2023 • From: J.P. Morgan</div>
-                            </div>
-                            <div class="transaction-amount positive">+$15,000.00</div>
-                        </li>
-                        <li class="transaction-item">
-                            <div class="transaction-details">
-                                <h4>Investment Purchase</h4>
-                                <div class="transaction-date">27 Nov 2023 • Global Equity Fund</div>
-                            </div>
-                            <div class="transaction-amount negative">-$10,000.00</div>
-                        </li>
-                        <li class="transaction-item">
-                            <div class="transaction-details">
-                                <h4>International Transfer</h4>
-                                <div class="transaction-date">25 Nov 2023 • To: Credit Suisse</div>
-                            </div>
-                            <div class="transaction-amount negative">-$5,000.00</div>
-                        </li>
-                        <li class="transaction-item">
-                            <div class="transaction-details">
-                                <h4>Dividend Payment</h4>
-                                <div class="transaction-date">22 Nov 2023 • Microsoft Corp</div>
-                            </div>
-                            <div class="transaction-amount positive">+$1,245.50</div>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="upcoming-payments">
-                    <h3>Upcoming Payments</h3>
-                    <ul class="transaction-list">
-                        <li class="payment-item">
-                            <div class="payment-details">
-                                <h4>Mortgage Payment</h4>
-                                <div class="payment-date">Due: 05 Dec 2023</div>
-                            </div>
-                            <div class="payment-amount">-$3,250.00</div>
-                        </li>
-                        <li class="payment-item">
-                            <div class="payment-details">
-                                <h4>Credit Card Payment</h4>
-                                <div class="payment-date">Due: 10 Dec 2023</div>
-                            </div>
-                            <div class="payment-amount">-$1,850.00</div>
-                        </li>
-                        <li class="payment-item">
-                            <div class="payment-details">
-                                <h4>Insurance Premium</h4>
-                                <div class="payment-date">Due: 15 Dec 2023</div>
-                            </div>
-                            <div class="payment-amount">-$520.00</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-col">
-                    <h3>Banking Services</h3>
-                    <ul>
-                        <li><a href="#">Personal Accounts</a></li>
-                        <li><a href="#">Business Banking</a></li>
-                        <li><a href="#">Wealth Management</a></li>
-                        <li><a href="#">International Banking</a></li>
-                        <li><a href="#">Digital Services</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="#">Security Center</a></li>
-                        <li><a href="#">Financial Tools</a></li>
-                        <li><a href="#">Market Insights</a></li>
-                        <li><a href="#">Rates & Fees</a></li>
-                        <li><a href="#">Support Center</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Company</h3>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Leadership</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">News & Media</a></li>
-                        <li><a href="#">Investor Relations</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Global Offices</h3>
-                    <ul>
-                        <li><a href="#">New York</a></li>
-                        <li><a href="#">London</a></li>
-                        <li><a href="#">Zurich</a></li>
-                        <li><a href="#">Singapore</a></li>
-                        <li><a href="#">Dubai</a></li>
-                    </ul>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="disclaimer">
-                <p><strong>Global Secure Bank</strong> is an international financial institution providing premium banking services to clients worldwide. All accounts are subject to applicable laws and regulations.</p>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2023 Global Secure Bank. All Rights Reserved. | Member FDIC | Equal Housing Lender</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeLoginModal">
-                <i class="fas fa-times"></i>
-            </button>
-            <h2 class="modal-title">Secure Online Banking</h2>
+    <!-- Login Page -->
+    <div id="loginPage" class="container hidden">
+        <div class="form-container">
+            <img src="https://via.placeholder.com/150x50/00823e/fff?text=Nedbank" alt="Nedbank Logo">
+            <h2>Nedbank Online Banking Login</h2>
             <form id="loginForm">
-                <div class="form-group">
-                    <label for="username">User ID</label>
-                    <input type="text" id="username" class="form-control" placeholder="Enter your user ID" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
-                </div>
-                <div class="form-options">
-                    <div class="remember-me">
-                        <input type="checkbox" id="remember">
-                        <label for="remember">Remember User ID</label>
-                    </div>
-                    <a href="#" class="forgot-password">Forgot Password?</a>
-                </div>
-                <button type="submit" class="modal-btn">Secure Login</button>
+                <label for="loginUsername">Username</label>
+                <input type="text" id="loginUsername" name="username" placeholder="Enter your username" required>
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+                <button type="submit">Log In</button>
             </form>
-            <div class="modal-footer">
-                <p>New to Global Secure Bank? <a href="#" id="switchToRegister">Enroll Now</a></p>
-            </div>
+            <div id="loginMessage" class="error hidden"></div>
+            <a href="#" onclick="showSignup()">Don't have an account? Sign Up</a>
+            <a href="#" onclick="showResetPassword()">Forgot Password?</a>
         </div>
     </div>
 
-    <!-- Registration Modal -->
-    <div class="modal" id="registerModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeRegisterModal">
-                <i class="fas fa-times"></i>
-            </button>
-            <h2 class="modal-title">Begin Your Application</h2>
-            <div class="form-steps">
-                <div class="step active" id="step1">1</div>
-                <div class="step" id="step2">2</div>
-                <div class="step" id="step3">3</div>
-            </div>
-            <form id="registrationForm">
-                <!-- Step 1: Personal Details -->
-                <div class="step-content active" id="stepContent1">
-                    <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" id="firstName" class="form-control" placeholder="Enter your first name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" class="form-control" placeholder="Enter your last name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" class="form-control" placeholder="Enter your email address" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
-                    </div>
-                    <div class="form-navigation">
-                        <button type="button" class="btn btn-outline" id="nextToStep2">Continue</button>
-                    </div>
-                </div>
-
-                <!-- Step 2: Account Details -->
-                <div class="step-content" id="stepContent2">
-                    <div class="form-group">
-                        <label for="accountType">Account Type</label>
-                        <select id="accountType" class="form-control" required>
-                            <option value="">Select account type</option>
-                            <option value="personal">Personal Banking</option>
-                            <option value="business">Business Excellence</option>
-                            <option value="premium">Private Wealth</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="username">Choose User ID</label>
-                        <input type="text" id="regUsername" class="form-control" placeholder="Choose a user ID" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Create Password</label>
-                        <input type="password" id="regPassword" class="form-control" placeholder="Create a password" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="confirmPassword">Confirm Password</label>
-                        <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm your password" required>
-                    </div>
-                    <div class="form-navigation">
-                        <button type="button" class="btn btn-outline" id="backToStep1">Back</button>
-                        <button type="button" class="btn btn-primary" id="nextToStep3">Continue</button>
-                    </div>
-                </div>
-
-                <!-- Step 3: Review & Submit -->
-                <div class="step-content" id="stepContent3">
-                    <div class="summary-card">
-                        <h3>Please review your information</h3>
-                        <p><strong>Name:</strong> <span id="reviewName"></span></p>
-                        <p><strong>Email:</strong> <span id="reviewEmail"></span></p>
-                        <p><strong>Phone:</strong> <span id="reviewPhone"></span></p>
-                        <p><strong>Account Type:</strong> <span id="reviewAccountType"></span></p>
-                        <p><strong>User ID:</strong> <span id="reviewUsername"></span></p>
-                    </div>
-                    <div class="form-group">
-                        <div class="remember-me">
-                            <input type="checkbox" id="terms" required>
-                            <label for="terms">I agree to the Terms & Conditions and Privacy Policy</label>
-                        </div>
-                    </div>
-                    <div class="form-navigation">
-                        <button type="button" class="btn btn-outline" id="backToStep2">Back</button>
-                        <button type="submit" class="btn btn-primary">Submit Application</button>
-                    </div>
-                </div>
+    <!-- Reset Password Page -->
+    <div id="resetPasswordPage" class="container hidden">
+        <div class="form-container">
+            <img src="https://via.placeholder.com/150x50/00823e/fff?text=Nedbank" alt="Nedbank Logo">
+            <h2>Reset Password</h2>
+            <p style="font-size: 0.8em; color: #666;">Enter your email to start the reset process.</p>
+            <form id="resetEmailForm">
+                <label for="resetEmail">Email</label>
+                <input type="email" id="resetEmail" name="email" placeholder="Enter your email" required>
+                <button type="submit">Verify Email</button>
             </form>
-            <div class="modal-footer">
-                <p>Already have an account? <a href="#" id="switchToLogin">Sign In</a></p>
+            <div id="resetEmailMessage" class="error hidden"></div>
+            <div id="resetVerificationSection" class="hidden">
+                <h3>Verify Identity</h3>
+                <label for="securityQuestionSelect">Security Question</label>
+                <select id="securityQuestionSelect" name="securityQuestion" disabled>
+                    <option value="">Loading...</option>
+                </select>
+                <label for="securityAnswerInput">Security Answer</label>
+                <input type="text" id="securityAnswerInput" placeholder="Enter your answer" required>
+                <label for="newPassword">New Password</label>
+                <input type="password" id="newPassword" name="newPassword" placeholder="Enter new password" minlength="8" required>
+                <label for="confirmNewPassword">Confirm New Password</label>
+                <input type="password" id="confirmNewPassword" name="confirmNewPassword" placeholder="Confirm new password" required>
+                <button onclick="verifyReset()">Reset Password</button>
             </div>
+            <a href="#" onclick="showLogin()">Back to Login</a>
         </div>
     </div>
 
-    <!-- Security Info Modal -->
-    <div class="modal" id="securityInfoModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeSecurityModal">
-                <i class="fas fa-times"></i>
-            </button>
-            <h2 class="modal-title">Our Security Commitment</h2>
-            <div class="security-content">
-                <p>At Global Secure Bank, we employ the most advanced security measures to protect your financial assets and personal information:</p>
-                <div class="feature-card" style="margin: 1.5rem 0; text-align: left;">
-                    <h3><i class="fas fa-shield-alt"></i> Multi-Layered Encryption</h3>
-                    <p>We use military-grade 256-bit encryption for all data transmissions and storage.</p>
-                </div>
-                <div class="feature-card" style="margin: 1.5rem 0; text-align: left;">
-                    <h3><i class="fas fa-fingerprint"></i> Biometric Authentication</h3>
-                    <p>Advanced biometric verification ensures only you can access your accounts.</p>
-                </div>
-                <div class="feature-card" style="margin: 1.5rem 0; text-align: left;">
-                    <h3><i class="fas fa-eye"></i> 24/7 Monitoring</h3>
-                    <p>Our systems continuously monitor for suspicious activity to prevent fraud.</p>
-                </div>
-                <div class="feature-card" style="margin: 1.5rem 0; text-align: left;">
-                    <h3><i class="fas fa-user-shield"></i> Privacy Protection</h3>
-                    <p>We never share your personal information with third parties without your consent.</p>
-                </div>
+    <!-- User Dashboard -->
+    <div id="userDashboard" class="dashboard hidden">
+        <div class="header">
+            <h1>Welcome to Nedbank Online Banking</h1>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+        <div class="profile-card">
+            <h3>User Profile</h3>
+            <div class="profile-info">
+                <p><strong>Username:</strong> <span id="profileUsername"></span></p>
+                <p><strong>Email:</strong> <span id="profileEmail"></span></p>
             </div>
+            <button class="edit-profile-btn" onclick="toggleEditProfile()">Edit Profile</button>
+            <form id="editProfileForm" class="edit-profile-form hidden">
+                <label for="editEmail">New Email</label>
+                <input type="email" id="editEmail" placeholder="Update your email">
+                <label for="editPassword">New Password</label>
+                <input type="password" id="editPassword" placeholder="Update your password" minlength="8">
+                <label for="editConfirmPassword">Confirm New Password</label>
+                <input type="password" id="editConfirmPassword" placeholder="Confirm new password">
+                <label for="editSecurityAnswer">Security Answer (optional)</label>
+                <input type="text" id="editSecurityAnswer" placeholder="Update your security answer">
+                <button type="submit">Save Changes</button>
+            </form>
+            <div id="editMessage" class="success hidden"></div>
+        </div>
+        <div class="balance-card">
+            <h3>Account Balance</h3>
+            <div class="balance" id="userBalance">R 0.00</div>
+            <p>Current Checking Account</p>
+        </div>
+        <div class="transactions">
+            <h3>Recent Transactions</h3>
+            <button class="transfer-btn" style="width: auto; margin-bottom: 10px;" onclick="exportTransactions()">Export Transaction History</button>
+            <ul class="transaction-list" id="userTransactions"></ul>
+        </div>
+        <div class="transfer-form">
+            <h3>Transfer Funds</h3>
+            <form id="transferForm">
+                <label for="toAccount">To Account Number</label>
+                <input type="text" id="toAccount" name="toAccount" placeholder="e.g., 123456789" required>
+                <label for="amount">Amount (R)</label>
+                <input type="number" id="amount" name="amount" placeholder="e.g., 500" step="0.01" min="0" required>
+                <button type="submit" class="transfer-btn">Transfer</button>
+            </form>
+            <div id="transferMessage" class="success hidden"></div>
         </div>
     </div>
 
-    <!-- Theme Toggle Button -->
-    <button class="theme-toggle" id="themeToggle">
-        <i class="fas fa-moon"></i>
-    </button>
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="admin-dashboard hidden">
+        <div class="header">
+            <h1>Nedbank Admin Dashboard</h1>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+        <div class="admin-section">
+            <h3>Pending Registrations</h3>
+            <ul class="user-list" id="pendingList"></ul>
+        </div>
+        <div class="admin-section">
+            <h3>Approved Users</h3>
+            <ul class="user-list" id="userList"></ul>
+        </div>
+        <div class="admin-section">
+            <h3>All Transactions</h3>
+            <ul class="transaction-list" id="allTransactions"></ul>
+        </div>
+    </div>
 
     <script>
-        // DOM Elements
-        const loginBtn = document.getElementById('loginBtn');
-        const registerBtn = document.getElementById('registerBtn');
-        const heroRegisterBtn = document.getElementById('heroRegisterBtn');
-        const securityInfoBtn = document.getElementById('securityInfoBtn');
-        const closeLoginModal = document.getElementById('closeLoginModal');
-        const closeRegisterModal = document.getElementById('closeRegisterModal');
-        const closeSecurityModal = document.getElementById('closeSecurityModal');
-        const loginModal = document.getElementById('loginModal');
-        const registerModal = document.getElementById('registerModal');
-        const securityInfoModal = document.getElementById('securityInfoModal');
-        const switchToRegister = document.getElementById('switchToRegister');
-        const switchToLogin = document.getElementById('switchToLogin');
-        const loginForm = document.getElementById('loginForm');
-        const registrationForm = document.getElementById('registrationForm');
-        const dashboard = document.getElementById('dashboard');
-        const logoutBtn = document.getElementById('logoutBtn');
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const closeMenu = document.getElementById('closeMenu');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const themeToggle = document.getElementById('themeToggle');
+        // User data storage
+        let currentUser = null;
+        let resetUser = null;
+        const usersKey = 'nedbank_users';
+        const getUsers = () => {
+            try {
+                return JSON.parse(localStorage.getItem(usersKey)) || [];
+            } catch (e) {
+                console.error('Error accessing localStorage:', e);
+                return [];
+            }
+        };
+        const saveUsers = (users) => {
+            try {
+                localStorage.setItem(usersKey, JSON.stringify(users));
+            } catch (e) {
+                console.error('Error saving to localStorage:', e);
+                showMessage('loginMessage', 'Storage error. Clear browser data.', 'error');
+            }
+        };
 
-        // Registration steps
-        const step1 = document.getElementById('step1');
-        const step2 = document.getElementById('step2');
-        const step3 = document.getElementById('step3');
-        const stepContent1 = document.getElementById('stepContent1');
-        const stepContent2 = document.getElementById('stepContent2');
-        const stepContent3 = document.getElementById('stepContent3');
-        const nextToStep2 = document.getElementById('nextToStep2');
-        const nextToStep3 = document.getElementById('nextToStep3');
-        const backToStep1 = document.getElementById('backToStep1');
-        const backToStep2 = document.getElementById('backToStep2');
+        // Initialize admin (credentials not exposed)
+        let users = getUsers();
+        if (!users.find(u => u.username === 'admin')) {
+            users.push({
+                username: 'admin',
+                email: 'admin@nedbank.com',
+                password: 'admin',
+                role: 'admin',
+                status: 'approved',
+                securityQuestion: 'pet',
+                securityAnswer: 'admin',
+                frozen: false
+            });
+            saveUsers(users);
+        }
 
-        // Review elements
-        const reviewName = document.getElementById('reviewName');
-        const reviewEmail = document.getElementById('reviewEmail');
-        const reviewPhone = document.getElementById('reviewPhone');
-        const reviewAccountType = document.getElementById('reviewAccountType');
-        const reviewUsername = document.getElementById('reviewUsername');
+        // User account data
+        const getUserData = (username) => {
+            try {
+                return JSON.parse(localStorage.getItem(`nedbank_${username}`)) || {
+                    balance: 0.00,
+                    transactions: []
+                };
+            } catch (e) {
+                console.error('Error accessing user data:', e);
+                return { balance: 0.00, transactions: [] };
+            }
+        };
+        const saveUserData = (username, data) => {
+            try {
+                localStorage.setItem(`nedbank_${username}`, JSON.stringify(data));
+            } catch (e) {
+                console.error('Error saving user data:', e);
+                showMessage('loginMessage', 'Storage error. Clear browser data.', 'error');
+            }
+        };
 
-        // Account buttons
-        const accountButtons = document.querySelectorAll('[data-account-type]');
+        // Navigation
+        function showMain() {
+            console.log('Navigating to Main Page');
+            hideAllPages();
+            document.getElementById('mainPage').classList.remove('hidden');
+        }
+        function showSignup() {
+            console.log('Navigating to Sign-Up Page');
+            hideAllPages();
+            document.getElementById('signupPage').classList.remove('hidden');
+            document.getElementById('signupMessage').classList.add('hidden');
+        }
+        function showLogin() {
+            console.log('Navigating to Login Page');
+            hideAllPages();
+            document.getElementById('loginPage').classList.remove('hidden');
+            document.getElementById('loginMessage').classList.add('hidden');
+        }
+        function showResetPassword() {
+            console.log('Navigating to Reset Password Page');
+            hideAllPages();
+            document.getElementById('resetPasswordPage').classList.remove('hidden');
+            document.getElementById('resetEmailMessage').classList.add('hidden');
+            document.getElementById('resetVerificationSection').classList.add('hidden');
+        }
+        function hideAllPages() {
+            console.log('Hiding all pages');
+            document.querySelectorAll('.main-page, .container, .dashboard, .admin-dashboard').forEach(page => {
+                page.classList.add('hidden');
+            });
+        }
 
-        // Event Listeners
-        loginBtn.addEventListener('click', () => {
-            loginModal.classList.add('active');
-        });
+        // Message display
+        function showMessage(id, text, type) {
+            const div = document.getElementById(id);
+            div.textContent = text;
+            div.className = type;
+            div.classList.remove('hidden');
+            setTimeout(() => div.classList.add('hidden'), 3000);
+        }
 
-        registerBtn.addEventListener('click', () => {
-            registerModal.classList.add('active');
-        });
-
-        heroRegisterBtn.addEventListener('click', () => {
-            registerModal.classList.add('active');
-        });
-
-        securityInfoBtn.addEventListener('click', () => {
-            securityInfoModal.classList.add('active');
-        });
-
-        closeLoginModal.addEventListener('click', () => {
-            loginModal.classList.remove('active');
-        });
-
-        closeRegisterModal.addEventListener('click', () => {
-            registerModal.classList.remove('active');
-            resetRegistrationForm();
-        });
-
-        closeSecurityModal.addEventListener('click', () => {
-            securityInfoModal.classList.remove('active');
-        });
-
-        switchToRegister.addEventListener('click', (e) => {
-            e.preventDefault();
-            loginModal.classList.remove('active');
-            registerModal.classList.add('active');
-        });
-
-        switchToLogin.addEventListener('click', (e) => {
-            e.preventDefault();
-            registerModal.classList.remove('active');
-            loginModal.classList.add('active');
-        });
-
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            // Simple validation
-            if (username && password) {
-                // In a real application, you would verify credentials with a server
-                // For this demo, we'll just simulate a successful login
-                simulateLogin(username);
-            } else {
-                alert('Please enter both username and password.');
+        // Event delegation for navigation
+        document.addEventListener('click', (e) => {
+            const target = e.target.closest('a, button');
+            if (!target) return;
+            if (target.getAttribute('onclick') === 'showMain()') {
+                e.preventDefault();
+                showMain();
+            } else if (target.getAttribute('onclick') === 'showSignup()') {
+                e.preventDefault();
+                showSignup();
+            } else if (target.getAttribute('onclick') === 'showLogin()') {
+                e.preventDefault();
+                showLogin();
+            } else if (target.getAttribute('onclick') === 'showResetPassword()') {
+                e.preventDefault();
+                showResetPassword();
             }
         });
 
-        registrationForm.addEventListener('submit', (e) => {
+        // Sign-up
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Get form values
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const accountType = document.getElementById('accountType').value;
-            const username = document.getElementById('regUsername').value;
-            const password = document.getElementById('regPassword').value;
+            console.log('Sign-up form submitted');
+            const fullName = document.getElementById('fullName').value.trim();
+            const idType = document.getElementById('idType').value;
+            const idNumber = document.getElementById('idNumber').value.trim();
+            const dob = new Date(document.getElementById('dob').value);
+            const address = document.getElementById('address').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('signupEmail').value.trim();
+            const username = document.getElementById('signupUsername').value.trim();
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+            const securityQuestion = document.getElementById('securityQuestion').value;
+            const securityAnswer = document.getElementById('securityAnswer').value.trim();
 
-            // In a real application, you would send this data to a server
-            // For this demo, we'll just simulate account creation and login
-            simulateRegistration(firstName, lastName, username);
-        });
-
-        logoutBtn.addEventListener('click', () => {
-            // Hide dashboard and show main content
-            dashboard.style.display = 'none';
-            document.querySelector('.hero').style.display = 'block';
-            document.querySelector('.features').style.display = 'block';
-            document.querySelector('.accounts').style.display = 'block';
-            document.querySelector('.security').style.display = 'block';
-            document.querySelector('.global').style.display = 'block';
-            document.querySelector('.app').style.display = 'block';
-            document.querySelector('footer').style.display = 'block';
-            
-            // Clear any stored login data
-            localStorage.removeItem('globalBankLoggedIn');
-            localStorage.removeItem('globalBankUsername');
-        });
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-        });
-
-        closeMenu.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-        });
-
-        // Registration steps navigation
-        nextToStep2.addEventListener('click', () => {
-            // Validate step 1
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-
-            if (!firstName || !lastName || !email || !phone) {
-                alert('Please fill in all fields');
+            const age = (new Date() - dob) / (365.25 * 24 * 60 * 60 * 1000);
+            if (age < 18) {
+                showMessage('signupMessage', 'You must be 18 or older.', 'error');
                 return;
             }
-
-            // Move to step 2
-            step1.classList.remove('active');
-            step2.classList.add('active');
-            stepContent1.classList.remove('active');
-            stepContent2.classList.add('active');
-        });
-
-        nextToStep3.addEventListener('click', () => {
-            // Validate step 2
-            const accountType = document.getElementById('accountType').value;
-            const username = document.getElementById('regUsername').value;
-            const password = document.getElementById('regPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-
-            if (!accountType || !username || !password || !confirmPassword) {
-                alert('Please fill in all fields');
-                return;
-            }
-
             if (password !== confirmPassword) {
-                alert('Passwords do not match');
+                showMessage('signupMessage', 'Passwords do not match.', 'error');
+                return;
+            }
+            if (!idNumber.match(/[0-9A-Za-z]{10,20}/)) {
+                showMessage('signupMessage', 'Invalid ID/Passport number.', 'error');
+                return;
+            }
+            if (!phone.match(/[0-9]{10}/)) {
+                showMessage('signupMessage', 'Invalid phone number (10 digits).', 'error');
                 return;
             }
 
-            // Update review information
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
+            let users = getUsers();
+            if (users.find(u => u.username === username)) {
+                showMessage('signupMessage', 'Username already exists.', 'error');
+                return;
+            }
 
-            reviewName.textContent = `${firstName} ${lastName}`;
-            reviewEmail.textContent = email;
-            reviewPhone.textContent = phone;
-            reviewAccountType.textContent = document.getElementById('accountType').options[document.getElementById('accountType').selectedIndex].text;
-            reviewUsername.textContent = username;
-
-            // Move to step 3
-            step2.classList.remove('active');
-            step3.classList.add('active');
-            stepContent2.classList.remove('active');
-            stepContent3.classList.add('active');
-        });
-
-        backToStep1.addEventListener('click', () => {
-            // Move back to step 1
-            step2.classList.remove('active');
-            step1.classList.add('active');
-            stepContent2.classList.remove('active');
-            stepContent1.classList.add('active');
-        });
-
-        backToStep2.addEventListener('click', () => {
-            // Move back to step 2
-            step3.classList.remove('active');
-            step2.classList.add('active');
-            stepContent3.classList.remove('active');
-            stepContent2.classList.add('active');
-        });
-
-        // Account buttons
-        accountButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                registerModal.classList.add('active');
-                const accountType = button.getAttribute('data-account-type');
-                document.getElementById('accountType').value = accountType;
+            users.push({
+                fullName, idType, idNumber, dob: dob.toISOString(), address, phone, email, username,
+                password, role: 'user', status: 'pending', securityQuestion, securityAnswer, frozen: false
             });
+            saveUsers(users);
+            saveUserData(username, { balance: 0.00, transactions: [] });
+
+            showMessage('signupMessage', 'Registration submitted. Awaiting admin approval.', 'success');
+            document.getElementById('signupForm').reset();
+            setTimeout(showLogin, 2000);
         });
 
-        // Theme toggle
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('light-theme');
-            const icon = themeToggle.querySelector('i');
-            
-            if (document.body.classList.contains('light-theme')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-                document.documentElement.style.setProperty('--dark-bg', '#f8f9fa');
-                document.documentElement.style.setProperty('--card-bg', '#ffffff');
-                document.documentElement.style.setProperty('--white', '#001f3f');
-                document.documentElement.style.setProperty('--gray', '#6c757d');
+        // Login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Login form submitted');
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            const users = getUsers();
+            const user = users.find(u => u.username === username && u.password === password);
+
+            if (user) {
+                if (user.frozen) {
+                    showMessage('loginMessage', 'Account is frozen. Contact admin.', 'error');
+                    return;
+                }
+                if (user.role === 'user' && user.status !== 'approved') {
+                    showMessage('loginMessage', 'Account pending admin approval.', 'error');
+                    return;
+                }
+                currentUser = user;
+                const userData = getUserData(username);
+                hideAllPages();
+                if (user.role === 'admin') {
+                    console.log('Showing admin dashboard');
+                    document.getElementById('adminDashboard').classList.remove('hidden');
+                    updateAdminDashboard();
+                } else {
+                    console.log('Showing user dashboard');
+                    document.getElementById('userDashboard').classList.remove('hidden');
+                    updateProfile();
+                    updateBalance(userData.balance);
+                    updateTransactions(userData.transactions);
+                }
             } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-                document.documentElement.style.setProperty('--dark-bg', '#1a1a2e');
-                document.documentElement.style.setProperty('--card-bg', '#16213e');
-                document.documentElement.style.setProperty('--white', '#ffffff');
-                document.documentElement.style.setProperty('--gray', '#6c757d');
+                showMessage('loginMessage', 'Invalid username or password.', 'error');
             }
         });
 
-        // Functions
-        function simulateLogin(username) {
-            // Hide login modal
-            loginModal.classList.remove('active');
+        // Reset Password - Email Verification
+        document.getElementById('resetEmailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Reset email form submitted');
+            const email = document.getElementById('resetEmail').value.trim();
+            const users = getUsers();
+            resetUser = users.find(u => u.email === email && u.role !== 'admin');
+            if (resetUser) {
+                document.getElementById('resetVerificationSection').classList.remove('hidden');
+                document.getElementById('securityQuestionSelect').value = resetUser.securityQuestion;
+                document.getElementById('securityQuestionSelect').disabled = true;
+                showMessage('resetEmailMessage', 'Please verify your identity.', 'success');
+            } else {
+                showMessage('resetEmailMessage', 'Email not found.', 'error');
+            }
+        });
 
-            // Hide main content sections
-            document.querySelector('.hero').style.display = 'none';
-            document.querySelector('.features').style.display = 'none';
-            document.querySelector('.accounts').style.display = 'none';
-            document.querySelector('.security').style.display = 'none';
-            document.querySelector('.global').style.display = 'none';
-            document.querySelector('.app').style.display = 'none';
-            document.querySelector('footer').style.display = 'none';
+        // Reset Password - Verify and Update
+        function verifyReset() {
+            console.log('Reset password verification submitted');
+            const answer = document.getElementById('securityAnswerInput').value.trim();
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmNewPassword').value;
 
-            // Show dashboard
-            dashboard.style.display = 'block';
+            if (answer.toLowerCase() !== resetUser.securityAnswer.toLowerCase()) {
+                showMessage('resetEmailMessage', 'Incorrect security answer.', 'error');
+                return;
+            }
+            if (newPassword !== confirmPassword) {
+                showMessage('resetEmailMessage', 'Passwords do not match.', 'error');
+                return;
+            }
+            if (newPassword.length < 8) {
+                showMessage('resetEmailMessage', 'Password must be at least 8 characters.', 'error');
+                return;
+            }
 
-            // Set username
-            document.getElementById('userName').textContent = username;
-
-            // Store login state
-            localStorage.setItem('globalBankLoggedIn', 'true');
-            localStorage.setItem('globalBankUsername', username);
-
-            // Initialize charts
-            initCharts();
+            let users = getUsers();
+            const userIndex = users.findIndex(u => u.username === resetUser.username);
+            users[userIndex].password = newPassword;
+            saveUsers(users);
+            resetUser = null;
+            showMessage('resetEmailMessage', 'Password reset successfully! Returning to login.', 'success');
+            document.getElementById('resetEmailForm').reset();
+            document.getElementById('resetVerificationSection').classList.add('hidden');
+            setTimeout(showLogin, 2000);
         }
 
-        function simulateRegistration(firstName, lastName, username) {
-            // Hide registration modal
-            registerModal.classList.remove('active');
-
-            // Reset registration form
-            resetRegistrationForm();
-
-            // Hide main content sections
-            document.querySelector('.hero').style.display = 'none';
-            document.querySelector('.features').style.display = 'none';
-            document.querySelector('.accounts').style.display = 'none';
-            document.querySelector('.security').style.display = 'none';
-            document.querySelector('.global').style.display = 'none';
-            document.querySelector('.app').style.display = 'none';
-            document.querySelector('footer').style.display = 'none';
-
-            // Show dashboard
-            dashboard.style.display = 'block';
-
-            // Set username
-            document.getElementById('userName').textContent = username;
-
-            // Generate random account number
-            const accountNumber = 'XXXX-XXXX-' + Math.floor(1000 + Math.random() * 9000);
-            document.getElementById('accountNumber').textContent = accountNumber;
-
-            // Store login state
-            localStorage.setItem('globalBankLoggedIn', 'true');
-            localStorage.setItem('globalBankUsername', username);
-
-            // Initialize charts
-            initCharts();
+        // Update user profile
+        function updateProfile() {
+            console.log('Updating user profile');
+            document.getElementById('profileUsername').textContent = currentUser.username;
+            document.getElementById('profileEmail').textContent = currentUser.email;
         }
 
-        function resetRegistrationForm() {
-            // Reset form fields
-            registrationForm.reset();
-
-            // Reset steps
-            step1.classList.add('active');
-            step2.classList.remove('active');
-            step3.classList.remove('active');
-            stepContent1.classList.add('active');
-            stepContent2.classList.remove('active');
-            stepContent3.classList.remove('active');
+        // Toggle edit profile form
+        function toggleEditProfile() {
+            console.log('Toggling edit profile form');
+            const form = document.getElementById('editProfileForm');
+            form.classList.toggle('hidden');
+            document.getElementById('editMessage').classList.add('hidden');
         }
 
-        function initCharts() {
-            // Spending Chart
-            const spendingCtx = document.getElementById('spendingChart').getContext('2d');
-            new Chart(spendingCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Housing', 'Transportation', 'Food', 'Entertainment', 'Utilities', 'Other'],
-                    datasets: [{
-                        data: [35, 15, 20, 10, 12, 8],
-                        backgroundColor: [
-                            '#0033a0',
-                            '#d4af37',
-                            '#28a745',
-                            '#dc3545',
-                            '#6f42c1',
-                            '#fd7e14'
-                        ],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                            labels: {
-                                color: '#e0e0e0'
-                            }
-                        }
-                    }
-                }
-            });
+        // Edit profile
+        document.getElementById('editProfileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Edit profile form submitted');
+            const newEmail = document.getElementById('editEmail').value.trim();
+            const newPassword = document.getElementById('editPassword').value;
+            const confirmPassword = document.getElementById('editConfirmPassword').value;
+            const newSecurityAnswer = document.getElementById('editSecurityAnswer').value.trim();
 
-            // Investment Chart
-            const investmentCtx = document.getElementById('investmentChart').getContext('2d');
-            new Chart(investmentCtx, {
-                type: 'line',
-                data: {
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                    datasets: [{
-                        label: 'Portfolio Value',
-                        data: [200000, 205000, 210000, 215000, 220000, 222000, 225000, 228000, 232000, 235000, 238000, 242150],
-                        borderColor: '#d4af37',
-                        backgroundColor: 'rgba(212, 175, 55, 0.1)',
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: '#e0e0e0'
-                            }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            ticks: {
-                                color: '#e0e0e0',
-                                callback: function(value) {
-                                    return '$' + value.toLocaleString();
-                                }
-                            }
-                        },
-                        x: {
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            ticks: {
-                                color: '#e0e0e0'
-                            }
-                        }
-                    }
-                }
+            if (newPassword && newPassword !== confirmPassword) {
+                showMessage('editMessage', 'Passwords do not match.', 'error');
+                return;
+            }
+            if (newPassword && newPassword.length < 8) {
+                showMessage('editMessage', 'Password must be at least 8 characters.', 'error');
+                return;
+            }
+
+            let users = getUsers();
+            const userIndex = users.findIndex(u => u.username === currentUser.username);
+            if (newEmail) users[userIndex].email = newEmail;
+            if (newPassword) users[userIndex].password = newPassword;
+            if (newSecurityAnswer) users[userIndex].securityAnswer = newSecurityAnswer;
+            saveUsers(users);
+            currentUser = users[userIndex];
+            updateProfile();
+
+            showMessage('editMessage', 'Profile updated successfully!', 'success');
+            document.getElementById('editProfileForm').reset();
+            setTimeout(toggleEditProfile, 2000);
+        });
+
+        // Update balance
+        function updateBalance(balance) {
+            console.log('Updating balance:', balance);
+            document.getElementById('userBalance').textContent = `R ${balance.toFixed(2)}`;
+        }
+
+        // Update transactions
+        function updateTransactions(transactions) {
+            console.log('Updating transactions:', transactions);
+            const list = document.getElementById('userTransactions');
+            list.innerHTML = '';
+            transactions.slice(-5).forEach(tx => {
+                const li = document.createElement('li');
+                li.className = 'transaction-item';
+                li.innerHTML = `<span>${tx.desc}</span><span>${tx.amount >= 0 ? '+' : ''}R ${Math.abs(tx.amount).toFixed(2)}</span>`;
+                list.appendChild(li);
             });
         }
 
-        // Close modals when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target === loginModal) {
-                loginModal.classList.remove('active');
+        // Transfer
+        document.getElementById('transferForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Transfer form submitted');
+            const toAccount = document.getElementById('toAccount').value.trim();
+            const amount = parseFloat(document.getElementById('amount').value);
+
+            const userData = getUserData(currentUser.username);
+            if (isNaN(amount) || amount <= 0) {
+                showMessage('transferMessage', 'Invalid amount.', 'error');
+                return;
             }
-            if (e.target === registerModal) {
-                registerModal.classList.remove('active');
-                resetRegistrationForm();
+            if (amount > userData.balance) {
+                showMessage('transferMessage', 'Insufficient funds.', 'error');
+                return;
             }
-            if (e.target === securityInfoModal) {
-                securityInfoModal.classList.remove('active');
-            }
+
+            userData.balance -= amount;
+            userData.transactions.unshift({ desc: `Transfer to ${toAccount}`, amount: -amount });
+            saveUserData(currentUser.username, userData);
+            updateBalance(userData.balance);
+            updateTransactions(userData.transactions);
+
+            showMessage('transferMessage', `Transfer of R ${amount.toFixed(2)} to ${toAccount} successful!`, 'success');
+            document.getElementById('transferForm').reset();
         });
 
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check if user is already logged in (for demo purposes)
-            const isLoggedIn = localStorage.getItem('globalBankLoggedIn');
-            if (isLoggedIn) {
-                const username = localStorage.getItem('globalBankUsername');
-                simulateLogin(username);
+        // Export transactions
+        function exportTransactions() {
+            console.log('Exporting transactions');
+            const userData = getUserData(currentUser.username);
+            const blob = new Blob([JSON.stringify(userData.transactions, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'transactions.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Update admin dashboard
+        function updateAdminDashboard() {
+            console.log('Updating admin dashboard');
+            const users = getUsers().filter(u => u.role !== 'admin');
+            const userList = document.getElementById('userList');
+            const pendingList = document.getElementById('pendingList');
+            const allTransactionsList = document.getElementById('allTransactions');
+            userList.innerHTML = '';
+            pendingList.innerHTML = '';
+            allTransactionsList.innerHTML = '';
+
+            users.forEach(user => {
+                const li = document.createElement('li');
+                li.className = 'user-item';
+                const balance = getUserData(user.username).balance;
+                li.innerHTML = `
+                    <span><strong>Username:</strong> ${user.username}</span>
+                    <span><strong>Email:</strong> ${user.email}</span>
+                    <span><strong>Status:</strong> ${user.status}</span>
+                    <span><strong>Balance:</strong> R ${balance.toFixed(2)}</span>
+                    <span><strong>Frozen:</strong> ${user.frozen ? 'Yes' : 'No'}</span>
+                    <div class="user-actions">
+                        ${user.status === 'pending' ? `<button class="admin-btn" onclick="approveUser('${user.username}')">Approve</button><button class="admin-btn delete-btn" onclick="rejectUser('${user.username}')">Reject</button>` : ''}
+                        <button class="admin-btn delete-btn" onclick="deleteUser('${user.username}')">Delete</button>
+                        <button class="admin-btn freeze-btn" onclick="toggleFreezeUser('${user.username}')">${user.frozen ? 'Unfreeze' : 'Freeze'}</button>
+                        <button class="admin-btn" onclick="showEditUser('${user.username}')">Edit</button>
+                    </div>
+                    <form class="deposit-form" onsubmit="manualDeposit(event, '${user.username}')">
+                        <input type="number" placeholder="Deposit Amount (R)" step="0.01" min="0" required>
+                        <button type="submit" class="admin-btn">Deposit</button>
+                    </form>
+                    <form class="deposit-form" onsubmit="manualWithdraw(event, '${user.username}')">
+                        <input type="number" placeholder="Withdraw Amount (R)" step="0.01" min="0" required>
+                        <button type="submit" class="admin-btn">Withdraw</button>
+                    </form>
+                    <form class="admin-edit-form hidden" id="editUserForm_${user.username}">
+                        <label for="editUserEmail_${user.username}">Email</label>
+                        <input type="email" id="editUserEmail_${user.username}" value="${user.email}">
+                        <label for="editUserSecurityQuestion_${user.username}">Security Question</label>
+                        <select id="editUserSecurityQuestion_${user.username}">
+                            <option value="pet" ${user.securityQuestion === 'pet' ? 'selected' : ''}>What is the name of your first pet?</option>
+                            <option value="school" ${user.securityQuestion === 'school' ? 'selected' : ''}>What is the name of your primary school?</option>
+                            <option value="city" ${user.securityQuestion === 'city' ? 'selected' : ''}>In which city were you born?</option>
+                        </select>
+                        <label for="editUserSecurityAnswer_${user.username}">Security Answer</label>
+                        <input type="text" id="editUserSecurityAnswer_${user.username}" value="${user.securityAnswer}">
+                        <button type="submit" class="admin-btn">Save</button>
+                    </form>
+                `;
+                if (user.status === 'pending') {
+                    pendingList.appendChild(li);
+                } else {
+                    userList.appendChild(li);
+                }
+            });
+
+            // All transactions
+            users.forEach(user => {
+                const userData = getUserData(user.username);
+                userData.transactions.forEach(tx => {
+                    const li = document.createElement('li');
+                    li.className = 'transaction-item';
+                    li.innerHTML = `<span>${user.username}: ${tx.desc}</span><span>${tx.amount >= 0 ? '+' : ''}R ${Math.abs(tx.amount).toFixed(2)}</span>`;
+                    allTransactionsList.appendChild(li);
+                });
+            });
+        }
+
+        // Approve user
+        function approveUser(username) {
+            console.log('Approving user:', username);
+            let users = getUsers();
+            const userIndex = users.findIndex(u => u.username === username);
+            if (userIndex !== -1) {
+                users[userIndex].status = 'approved';
+                const userData = getUserData(username);
+                userData.balance = 10000.00;
+                userData.transactions.push({ desc: 'Initial Deposit', amount: 10000.00 });
+                saveUsers(users);
+                saveUserData(username, userData);
+                updateAdminDashboard();
             }
-        });
+        }
+
+        // Reject user
+        function rejectUser(username) {
+            console.log('Rejecting user:', username);
+            if (confirm(`Reject ${username}'s registration?`)) {
+                deleteUser(username);
+            }
+        }
+
+        // Delete user
+        function deleteUser(username) {
+            console.log('Deleting user:', username);
+            let users = getUsers();
+            users = users.filter(u => u.username !== username);
+            saveUsers(users);
+            localStorage.removeItem(`nedbank_${username}`);
+            updateAdminDashboard();
+        }
+
+        // Toggle freeze user
+        function toggleFreezeUser(username) {
+            console.log('Toggling freeze for user:', username);
+            let users = getUsers();
+            const userIndex = users.findIndex(u => u.username === username);
+            if (userIndex !== -1) {
+                users[userIndex].frozen = !users[userIndex].frozen;
+                saveUsers(users);
+                updateAdminDashboard();
+            }
+        }
+
+        // Show edit user form
+        function showEditUser(username) {
+            console.log('Showing edit form for user:', username);
+            const form = document.getElementById(`editUserForm_${username}`);
+            form.classList.toggle('hidden');
+            form.onsubmit = (e) => {
+                e.preventDefault();
+                console.log('Editing user:', username);
+                const newEmail = document.getElementById(`editUserEmail_${username}`).value.trim();
+                const newSecurityQuestion = document.getElementById(`editUserSecurityQuestion_${username}`).value;
+                const newSecurityAnswer = document.getElementById(`editUserSecurityAnswer_${username}`).value.trim();
+
+                let users = getUsers();
+                const userIndex = users.findIndex(u => u.username === username);
+                if (newEmail) users[userIndex].email = newEmail;
+                if (newSecurityQuestion) users[userIndex].securityQuestion = newSecurityQuestion;
+                if (newSecurityAnswer) users[userIndex].securityAnswer = newSecurityAnswer;
+                saveUsers(users);
+                updateAdminDashboard();
+                alert(`User ${username} updated successfully.`);
+            };
+        }
+
+        // Manual deposit
+        function manualDeposit(event, username) {
+            event.preventDefault();
+            console.log('Depositing for user:', username);
+            const amountInput = event.target.querySelector('input');
+            const amount = parseFloat(amountInput.value);
+            if (isNaN(amount) || amount <= 0) {
+                alert('Invalid amount.');
+                return;
+            }
+            const userData = getUserData(username);
+            userData.balance += amount;
+            userData.transactions.unshift({ desc: `Admin Deposit`, amount: amount });
+            saveUserData(username, userData);
+            amountInput.value = '';
+            updateAdminDashboard();
+            alert(`Deposited R ${amount.toFixed(2)} to ${username}.`);
+        }
+
+        // Manual withdraw
+        function manualWithdraw(event, username) {
+            event.preventDefault();
+            console.log('Withdrawing for user:', username);
+            const amountInput = event.target.querySelector('input');
+            const amount = parseFloat(amountInput.value);
+            const userData = getUserData(username);
+            if (isNaN(amount) || amount <= 0) {
+                alert('Invalid amount.');
+                return;
+            }
+            if (amount > userData.balance) {
+                alert('Insufficient funds.');
+                return;
+            }
+            userData.balance -= amount;
+            userData.transactions.unshift({ desc: `Admin Withdrawal`, amount: -amount });
+            saveUserData(username, userData);
+            amountInput.value = '';
+            updateAdminDashboard();
+            alert(`Withdrew R ${amount.toFixed(2)} from ${username}.`);
+        }
+
+        // Logout
+        function logout() {
+            console.log('Logging out');
+            currentUser = null;
+            resetUser = null;
+            hideAllPages();
+            showMain();
+            document.getElementById('loginForm').reset();
+            document.getElementById('editProfileForm').reset();
+        }
+
+        // Initialize main page
+        console.log('Initializing main page');
+        showMain();
     </script>
 </body>
 </html>
